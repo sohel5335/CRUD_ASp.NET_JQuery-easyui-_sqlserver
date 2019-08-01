@@ -1,0 +1,332 @@
+﻿
+@{
+    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+@model IEnumerable<WebApplicationTest.Models.UserReg >
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>User from</title>
+
+  
+    
+</head>
+<body style="margin:0px; padding:0px">
+    @*<div class="MainBody">
+        <div id="TMgtMainLayout" class="easyui-layout" style="height:615px">
+            <div region="north" split="false" style="width:100%;height:65px; background-color:#594870">
+
+            </div>
+
+            <div region="west" split="true" title="Menu Bar" style="width:262px;">
+                <div style="height:100%; overflow:auto">
+                    <ul id="tt" class="easyui-tree"
+                        
+                        checkbox="true"></ul>
+                </div>
+            </div>*@
+
+            @*<div region="center" style="width:100%; height:auto">*@
+                <table id="dg" title="My Users" class="easyui-datagrid" style="width:100%;height:550px"
+                       toolbar="#toolbar" pagination="true"
+                       rownumbers="true" fitColumns="true" singleSelect="true">
+                    <thead>
+                        <tr>
+                            <th field="firstname" width="50">First Name</th>
+                            <th field="lastname" width="50">Last Name</th>
+                            <th field="UserName" width="50">UserName</th>
+                            <th field="email" width="50">Email</th>
+                            <th field="phone" width="50">Phone</th>
+                            <th field="Gender" width="50">Gender</th>
+                            <th field="PresentAddress" width="50">PresentAddress</th>
+                            <th field="LastEduQua" width="50">LastEduQua</th>
+                            <th field="Occupation" width="50">Occupation</th>
+                            <th field="DateOfBirth" width="50">DateOfBirth</th>
+
+
+                        </tr>
+                    </thead>
+                </table>
+                <div id="toolbar">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
+                </div>
+                <div id="dlg" class="easyui-dialog" style="width:50%" data-options="closed:true,modal:true,border:'thin',buttons:'#dlg-buttons'">
+
+                    <h3>User Information</h3>
+
+
+                    <div style="float:left;overflow:hidden;width:100%">
+                        <div style="float:left;overflow:auto;width:20%">
+                            <div style="overflow:hidden;width:100%;display:block">
+                                <label style="float:right;"> First Name: </label>
+                            </div>
+                        </div>
+                        <div style="float:left;overflow:hidden;width:80%">
+                            <div style="width:100%">
+                                <div style="width:35%;float:left;overflow:hidden"><input id="firstname" class="easyui-textbox" style="width:100%"></div>
+                                <div style="width:30%;float:left;overflow:hidden"><label style="float:right;margin-top:2px"> Last Name: </label></div>
+                                <div style="width:35%;float:left;overflow:hidden"><input id="lastname" class="easyui-textbox" style="width:100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left;overflow:hidden;width:100%;margin:2px 2px">
+                        <div style="float:left; overflow:auto;width:20%">
+                            <div style="overflow:hidden;width:100%;display:block">
+                                <label style="float:right;margin-top:2px"> UserName: </label>
+                            </div>
+                        </div>
+                        <div style="float:left;overflow:hidden;width:80%">
+                            <div style="width:100%">
+                                <div style="width:100%;float:left;overflow:hidden"><input id="UserName" class="easyui-textbox" style="width:100%"></div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div style="float:left;overflow:hidden;width:100%;margin:2px 2px">
+                        <div style="float:left; overflow:auto;width:20%">
+                            <div style="overflow:hidden;width:100%;display:block">
+                                <label style="float:right;margin-top:2px"> Email: </label>
+                            </div>
+                        </div>
+                        <div style="float:left;overflow:hidden;width:80%">
+                            <div style="width:100%">
+                                <div style="width:100%;float:left;overflow:hidden"><input id="email" class="easyui-textbox" style="width:100%"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left;overflow:hidden;width:100%;margin:2px 2px">
+                        <div style="float:left; overflow:auto;width:20%">
+                            <div style="overflow:hidden;width:100%;display:block">
+                                <label style="float:right;margin-top:2px"> phone: </label>
+                            </div>
+                        </div>
+                        <div style="float:left;overflow:hidden;width:80%">
+                            <div style="width:100%">
+                                <div style="width:100%;float:left;overflow:hidden"><input id="phone" class="easyui-textbox" style="width:100%"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left;overflow:hidden;width:100%;margin:2px 2px">
+                        <div style="float:left; overflow:auto;width:20%">
+                            <div style="overflow:hidden;width:100%;display:block">
+                                <label style="float:right;margin-top:2px"> Gender: </label>
+                            </div>
+                        </div>
+                        <div style="float:left;overflow:hidden;width:80%">
+                            <div style="width:100%;margin-left:5px">
+
+                                <input  type="radio" id="male" name="gender" value="Male"> Male
+                                <input  type="radio" id="Female" name="gender" value="Female">Female
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left;overflow:hidden;width:100%;margin:2px 2px">
+                        <div style="float:left; overflow:auto;width:20%">
+                            <div style="overflow:hidden;width:100%;display:block">
+                                <label style="float:right;margin-top:2px"> PresentAddress: </label>
+                            </div>
+                        </div>
+                        <div style="float:left;overflow:hidden;width:80%">
+                            <div style="width:100%">
+                                <div style="width:100%;float:left;overflow:hidden"><input id="PresentAddress" class="easyui-textbox" style="width:100%"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left;overflow:hidden;width:100%;margin:2px 2px">
+                        <div style="float:left; overflow:auto;width:20%">
+                            <div style="overflow:hidden;width:100%;display:block">
+                                <label style="float:right;margin-top:2px"> Last Edu Qua: </label>
+                            </div>
+                        </div>
+                        <div style="float:left;overflow:hidden;width:80%">
+                            <div style="width:100%">
+                                <div style="width:100%;float:left;overflow:hidden"><input id="LastEduQua" class="easyui-textbox" style="width:100%"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left;overflow:hidden;width:100%;margin:2px 2px">
+                        <div style="float:left; overflow:auto;width:20%">
+                            <div style="overflow:hidden;width:100%;display:block">
+                                <label style="float:right;margin-top:2px"> Occupation: </label>
+                            </div>
+                        </div>
+                        <div style="float:left;overflow:hidden;width:80%">
+                            <div style="width:100%">
+                                <div style="width:100%;float:left;overflow:hidden"><input id="Occupation" class="easyui-textbox" style="width:100%"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left;overflow:hidden;width:100%;margin:2px 2px">
+                        <div style="float:left; overflow:auto;width:20%">
+                            <div style="overflow:hidden;width:100%;display:block">
+                                <label style="float:right;margin-top:2px"> Date Of Birth: </label>
+                            </div>
+                        </div>
+                        <div style="float:left;overflow:hidden;width:80%">
+                            <div style="width:100%">
+                                <div style="width:100%;float:left;overflow:hidden"><input id="DateOfBirth" class="easyui-datebox" style="width:100%"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  
+                    <div id="dlg-buttons">
+                        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">Save</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+                    </div>
+
+                @*</div>*@
+
+            @*<div region="south" style="height:10px; width:100%; background-color:#594870; text-align:center; color:White; font-weight:bold; font-size:12px">
+                <a id="LinkICSInfo" href="http://alamin.softmaticbd.com" style="text-align:center; font-size:12px" target="_blank">www.alamin.softmaticbd.com</a>
+                <span style="margin-left:20px; font-size:small">&copy; 2019 Sohel</span>
+            </div>
+
+        </div>
+
+    </div>*@
+</body>
+</html>
+<script type="text/javascript">
+    var url;
+    $(document).ready(function ()
+    {
+        var users = JSON.parse('@Html.Raw(Json.Encode(Model))');
+        $('#dg').datagrid('loadData', users);
+
+    });
+    
+    debugger;
+    function newUser() {
+        $('#dlg').dialog('open').dialog('center').dialog('setTitle', 'New User');
+        
+    }
+    function saveUser() {
+        debugger;
+        var setid;
+        var tablerow = $('#dg').datagrid('getSelected');
+        if (tablerow == 'undefined' || tablerow==null)
+            setid = 0;
+        else
+            setid = tablerow.id; 
+        var obj = {
+            id: setid,
+            firstname: $('#firstname').val(),
+            lastname: $('#lastname').val(),
+            UserName: $('#UserName').val(),
+            email: $('#email').val(),
+            phone: $('#phone').val(),
+            Gender: $("input[name='gender']:checked").val(),
+            PresentAddress: $('#PresentAddress').val(),
+            LastEduQua: $('#LastEduQua').val(),
+            Occupation: $('#Occupation').val(),
+            DateOfBirth: $('#DateOfBirth').datebox('getValue')
+            
+
+        };
+  
+
+        $.ajax({
+            type: "POST",
+            url: "UserReg/FirstAjax",
+            data: JSON.stringify(obj),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                debugger;
+                tablerow = data;
+                if (setid != 0)
+                {
+                     var user = $('#dg').datagrid('getSelected');
+                    var rowIndex = $("#dg").datagrid("getRowIndex", user);
+                    $('#dg').datagrid('updateRow', { index: rowIndex, row: data });
+                    
+                }
+                   
+                else
+                    $('#dg').datagrid('appendRow', data);
+
+                $('#dlg').dialog('close');
+                alert("save successfully ");
+            },
+            error: function (data) {
+                debugger;
+                alert(data.erro);
+            }
+        });
+       
+    }
+
+    function destroyUser()
+    {
+        debugger;
+        var user = $('#dg').datagrid('getSelected');
+        if (user == 'undefine')
+        {
+            alert('select a row');
+
+        }
+        if (user.id == 0)
+        {
+            var rowIndex = $("#dg").datagrid("getRowIndex", user);
+            $('#dg').datagrid('deleteRow', rowIndex);
+            return;
+        }
+
+
+
+        $.ajax({
+            type: "POST",
+            url: "UserReg/delete",
+            data: JSON.stringify(user),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                debugger;
+                var rowIndex = $("#dg").datagrid("getRowIndex", user);
+                $('#dg').datagrid('deleteRow', rowIndex);
+                alert("delete successfully ");
+            },
+            error: function (data) {
+                alert("erro");
+            }
+        });
+
+       
+    }
+    function save(obj)
+    {
+       
+    }
+    function editUser() {
+        debugger;
+        var obj = $('#dg').datagrid('getSelected');
+        $('#firstname').textbox('setValue', obj.firstname);
+        $('#lastname').textbox('setValue',obj.lastname);
+        $('#UserName').textbox('setValue',obj.UserName);
+        $('#email').textbox('setValue',obj.email);
+        $('#phone').textbox('setValue', obj.phone);
+        $("input[name=gender][value=" + obj.Gender + "]").attr('checked', 'checked');
+        $('#PresentAddress').textbox('setValue',obj.PresentAddress);
+        $('#LastEduQua').textbox('setValue',obj.LastEduQua);
+        $('#Occupation').textbox('setValue',obj.Occupation);
+        
+        $('#DateOfBirth').datebox('setValue', obj.DateOfBirth);
+        $('#dlg').dialog('open').dialog('center').dialog('setTitle', 'New User');
+       
+    } 
+</script>

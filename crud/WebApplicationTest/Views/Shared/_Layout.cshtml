@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/themes/default/easyui.css" rel="stylesheet" />
+    <link href="~/Content/themes/icon.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.12.4.min.js"></script>
+    <script src="~/Scripts/jquery.easyui-1.4.5.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "UserReg", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
+    <div class="MainBody">
+        <div id="TMgtMainLayout" class="easyui-layout" style="height:615px">
+            <div region="north" split="false" style="width:100%;height:65px; background-color:#594870">
+
+            </div>
+
+            <div region="west" split="true" title="Menu Bar" style="width:262px;">
+                <div style="height:100%; overflow:auto">
+                    <ul id="tt" class="easyui-tree"
+                        checkbox="true"></ul>
+                </div>
+            </div>
+            <div region="center" style="width:100%; height:auto">
+                @RenderBody()
+            </div>
+
+            <div region="south" style="height:10px; width:100%; background-color:#594870; text-align:center; color:White; font-weight:bold; font-size:12px">
+                <a id="LinkICSInfo" href="http://alamin.softmaticbd.com" style="text-align:center; font-size:12px" target="_blank">www.alamin.softmaticbd.com</a>
+                <span style="margin-left:20px; font-size:small">&copy; 2019 Sohel</span>
+            </div>
+
+        </div>
+
+        </div>
+
+</body>
+</html>
